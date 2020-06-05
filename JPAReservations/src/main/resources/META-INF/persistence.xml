@@ -8,7 +8,7 @@
     <provider>org.hibernate.jpa.HibernatePersistenceProvider
     </provider>
     
-    <class>com.skilldistillery.event.entities.Event</class>
+    <class>com.skilldistillery.event.entities.Reservation</class>
    
 
     <properties>

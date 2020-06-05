@@ -16,11 +16,11 @@ CREATE SCHEMA IF NOT EXISTS `eventdb` DEFAULT CHARACTER SET utf8 ;
 USE `eventdb` ;
 
 -- -----------------------------------------------------
--- Table `reservations`
+-- Table `reservation`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `reservations` ;
+DROP TABLE IF EXISTS `reservation` ;
 
-CREATE TABLE IF NOT EXISTS `reservations` (
+CREATE TABLE IF NOT EXISTS `reservation` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(500) NOT NULL,
   PRIMARY KEY (`id`))
@@ -38,11 +38,11 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- -----------------------------------------------------
--- Data for table `reservations`
+-- Data for table `reservation`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `eventdb`;
-INSERT INTO `reservations` (`id`, `name`) VALUES (1, 'Test');
+INSERT INTO `reservation` (`id`, `name`) VALUES (1, 'Test');
 
 COMMIT;
 

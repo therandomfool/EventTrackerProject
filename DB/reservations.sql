@@ -23,6 +23,12 @@ DROP TABLE IF EXISTS `reservation` ;
 CREATE TABLE IF NOT EXISTS `reservation` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(500) NOT NULL,
+  `date` DATE NOT NULL,
+  `phone` VARCHAR(45) NOT NULL,
+  `time` TIME NOT NULL,
+  `howMany` INT NOT NULL,
+  `requests` TEXT NULL,
+  `email` VARCHAR(200) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -42,7 +48,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `eventdb`;
-INSERT INTO `reservation` (`id`, `name`) VALUES (1, 'Test');
+INSERT INTO `reservation` (`id`, `name`, `date`, `phone`, `time`, `howMany`, `requests`, `email`) VALUES (1, 'Test', '2020-06-05', '123-456-7890', '06:30', 3, 'none', 'Test@yahoo.com');
 
 COMMIT;
 

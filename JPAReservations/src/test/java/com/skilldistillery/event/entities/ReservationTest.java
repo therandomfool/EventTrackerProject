@@ -44,7 +44,14 @@ class ReservationTest {
 	@Test
 	void test() {
 		assertNotNull(event);
-		assertEquals("Test", event.getName());;
+		assertEquals("Test", event.getName());
+		assertEquals("123-456-7890", event.getPhone());
+//		assertEquals(2020-06-05, event.getDate());
+//		assertEquals(1830, event.getTime());
+		assertEquals(3, event.getHowMany());
+		assertEquals("none", event.getRequests());
+		assertEquals("Test@yahoo.com", event.getEmail());
+		assertEquals(true, event.getEnabled());
 	}
 
 }

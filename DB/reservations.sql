@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS `reservation` (
   `howMany` INT NOT NULL,
   `requests` TEXT NULL,
   `email` VARCHAR(200) NULL,
+  `enabled` TINYINT NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -48,7 +49,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `eventdb`;
-INSERT INTO `reservation` (`id`, `name`, `date`, `phone`, `time`, `howMany`, `requests`, `email`) VALUES (1, 'Test', '2020-06-05', '123-456-7890', '06:30', 3, 'none', 'Test@yahoo.com');
+INSERT INTO `reservation` (`id`, `name`, `date`, `phone`, `time`, `howMany`, `requests`, `email`, `enabled`) VALUES (1, 'Test', '2020-06-05', '123-456-7890', '18:30', 3, 'none', 'Test@yahoo.com', DEFAULT);
 
 COMMIT;
 

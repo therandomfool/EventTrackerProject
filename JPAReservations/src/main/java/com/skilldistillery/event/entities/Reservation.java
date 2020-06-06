@@ -1,11 +1,15 @@
 package com.skilldistillery.event.entities;
 
-import java.time.LocalDate;
 
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+
 
 @Entity
 public class Reservation {
@@ -17,12 +21,13 @@ public class Reservation {
 	
 	private String name;
 	
-	private LocalDate date;
+	@Column(name="reservation_time")
+	private LocalDateTime reservationTime;
 	
 	private String phone;
 	
-	private LocalDate time;
 	
+	@Column(name="how_many")
 	private int howMany;
 	
 	private String requests;
@@ -33,98 +38,143 @@ public class Reservation {
 	
 	
 //	Methods
-	
-	
-	public Reservation(int id, String name, LocalDate date, String phone, LocalDate time, int howMany, String requests,
+	public Reservation(int id, String name, LocalDateTime reservationTime, String phone, int howMany, String requests,
 			String email, Boolean enabled) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.date = date;
+		this.reservationTime = reservationTime;
 		this.phone = phone;
-		this.time = time;
 		this.howMany = howMany;
 		this.requests = requests;
 		this.email = email;
 		this.enabled = enabled;
 	}
+	
+	
+	
 	
 	public Reservation() {
 		super();
 	}
 	
+	
+	
 	public int getId() {
 		return id;
 	}
+
+
+
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
+
+
+
 	public String getName() {
 		return name;
 	}
+
+
+
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	public LocalDate getDate() {
-		return date;
+
+
+
+
+	public LocalDateTime getReservationTime() {
+		return reservationTime;
 	}
 
-	public void setDate(LocalDate date) {
-		this.date = date;
+
+
+
+	public void setReservationTime(LocalDateTime reservationTime) {
+		this.reservationTime = reservationTime;
 	}
+
+
+
 
 	public String getPhone() {
 		return phone;
 	}
 
+
+
+
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
-	public LocalDate getTime() {
-		return time;
-	}
 
-	public void setTime(LocalDate time) {
-		this.time = time;
-	}
+
 
 	public int getHowMany() {
 		return howMany;
 	}
 
+
+
+
 	public void setHowMany(int howMany) {
 		this.howMany = howMany;
 	}
+
+
+
 
 	public String getRequests() {
 		return requests;
 	}
 
+
+
+
 	public void setRequests(String requests) {
 		this.requests = requests;
 	}
+
+
+
 
 	public String getEmail() {
 		return email;
 	}
 
+
+
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+
+
 
 	public Boolean getEnabled() {
 		return enabled;
 	}
 
+
+
+
 	public void setEnabled(Boolean enabled) {
 		this.enabled = enabled;
 	}
 
+
+
+
 	@Override
 	public String toString() {
-		return "Reservation [id=" + id + ", name=" + name + ", date=" + date + ", phone=" + phone + ", time=" + time
+		return "Reservation [id=" + id + ", name=" + name + ", reservationTime=" + reservationTime + ", phone=" + phone
 				+ ", howMany=" + howMany + ", requests=" + requests + ", email=" + email + ", enabled=" + enabled + "]";
 	}
 
@@ -149,6 +199,8 @@ public class Reservation {
 			return false;
 		return true;
 	}
+
+
 
 
 

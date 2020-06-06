@@ -23,10 +23,9 @@ DROP TABLE IF EXISTS `reservation` ;
 CREATE TABLE IF NOT EXISTS `reservation` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(500) NOT NULL,
-  `date` DATE NOT NULL,
+  `reservation_time` DATETIME NOT NULL,
   `phone` VARCHAR(45) NOT NULL,
-  `time` TIME NOT NULL,
-  `howMany` INT NOT NULL,
+  `how_many` INT NOT NULL,
   `requests` TEXT NULL,
   `email` VARCHAR(200) NULL,
   `enabled` TINYINT NOT NULL DEFAULT 1,
@@ -49,7 +48,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `eventdb`;
-INSERT INTO `reservation` (`id`, `name`, `date`, `phone`, `time`, `howMany`, `requests`, `email`, `enabled`) VALUES (1, 'Test', '2020-06-05', '123-456-7890', '18:30', 3, 'none', 'Test@yahoo.com', DEFAULT);
+INSERT INTO `reservation` (`id`, `name`, `reservation_time`, `phone`, `how_many`, `requests`, `email`, `enabled`) VALUES (1, 'Test', '2020-06-06 18:30:00', '123-456-7890', 3, 'none', 'Test@yahoo.com', 1);
 
 COMMIT;
 

@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.skilldistillery.event.entities.Reservation;
 import com.skilldistillery.event.repositories.ReservationRepository;
 
+@Service
 public class ReservationServiceImpl  implements ReservationService{
 	
 	@Autowired
@@ -46,14 +48,13 @@ public class ReservationServiceImpl  implements ReservationService{
 		Reservation managedReservation = null;
 		if(optReserve.isPresent()) {
 			managedReservation = optReserve.get();
-			managedReservation.getName();
-			managedReservation.getDate();
-			managedReservation.getPhone();
-			managedReservation.getTime();
-			managedReservation.getHowMany();
-			managedReservation.getRequests();
-			managedReservation.getEmail();
-			
+			managedReservation.setName(reservation.getName());
+			managedReservation.setReservationTime(reservation.getReservationTime());
+			managedReservation.setPhone(reservation.getPhone());
+			managedReservation.setHowMany(reservation.getHowMany());
+			managedReservation.setRequests(reservation.getRequests());
+			managedReservation.setEmail(reservation.getEmail());
+			reRepo.saveAndFlush(managedReservation);	
 		}
 			
 		return managedReservation;

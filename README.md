@@ -7,6 +7,6 @@
 <img src="images/ReservationReturnTypes.png">
 
 ## Technologies Used
-<img src="images/reservationTechnologiesUsed.png">
+<img src="images/reservationTechnologiesUsed.png" height ="720">
 
 ## Lessons Learned

@@ -1,5 +1,5 @@
 ## Event Tracker Project
-<img src="images/ReservationTracker-logos.jpeg">
+<img src="images/ReservationTracker-logos.jpeg" height="100">
 
 ## Week 11-13 Project for Skill Distillery
 

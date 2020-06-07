@@ -3,5 +3,8 @@
 ## Week 11-13 Project for Skill Distillery
 
 ## API Endpoints
+<img src="ReservationReturnTypes.png">
 
-## 
+## Technologies Used
+
+## Lessons Learned

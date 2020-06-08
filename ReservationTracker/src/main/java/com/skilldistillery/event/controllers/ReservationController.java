@@ -96,6 +96,12 @@ public class ReservationController {
 		return reservation;
 	}
 	
+	@GetMapping("reservation/search/{keyword}")
+	public List<Reservation> reservationForKeyword(@PathVariable String keyword) {
+		return resSvc.reservationForKeyword(keyword);
+	}
+	
+	
 	@InitBinder
 	public void initBinder(WebDataBinder webDataBinder) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

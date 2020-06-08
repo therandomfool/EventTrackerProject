@@ -66,5 +66,14 @@ public class ReservationServiceImpl  implements ReservationService{
 		return reRepo.findAll();
 	}
 
+	@Override
+	public List<Reservation> reservationForKeyword(String keyword) {
+		keyword = "%" + keyword + "%";
+		
+		return reRepo.findByNameLike(keyword);
+	}
+	
+	
+
 
 }

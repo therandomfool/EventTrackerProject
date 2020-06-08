@@ -11,5 +11,6 @@ public interface ReservationService {
 	Boolean delete(int id);
 	Reservation update(Reservation reservation, int id);
 	List<Reservation> findAllReservations();
+	List<Reservation> reservationForKeyword(String keyword);
 
 }

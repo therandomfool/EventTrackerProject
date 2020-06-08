@@ -48,7 +48,15 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `eventdb`;
-INSERT INTO `reservation` (`id`, `name`, `reservation_time`, `phone`, `how_many`, `requests`, `email`, `enabled`) VALUES (1, 'Test', '2020-06-06 18:30:00', '123-456-7890', 3, 'none', 'Test@yahoo.com', 1);
+INSERT INTO `reservation` (`id`, `name`, `reservation_time`, `phone`, `how_many`, `requests`, `email`, `enabled`) VALUES (1, 'Rob', '2020-06-09 18:30:00', '123-456-7890', 3, 'none', 'Test@yahoo.com', 1);
+INSERT INTO `reservation` (`id`, `name`, `reservation_time`, `phone`, `how_many`, `requests`, `email`, `enabled`) VALUES (2, 'Denise', '2020-06-11 13:30:00', '834-561-6451', 6, 'VEGAN', 'xyzdorayme@aol.com', 1);
+INSERT INTO `reservation` (`id`, `name`, `reservation_time`, `phone`, `how_many`, `requests`, `email`, `enabled`) VALUES (3, 'Briana', '2020-06-15 11:15:00', '487-651-9321', 2, 'birthday', 'swifty@msn.com', 1);
+INSERT INTO `reservation` (`id`, `name`, `reservation_time`, `phone`, `how_many`, `requests`, `email`, `enabled`) VALUES (4, 'Alex', '2020-06-24 20:30:00', '648-814-9132', 1, 'retirement', 'upandatem@gmail.com', 1);
+INSERT INTO `reservation` (`id`, `name`, `reservation_time`, `phone`, `how_many`, `requests`, `email`, `enabled`) VALUES (5, 'Jeremy', '2020-06-30 21:30:00', '645-465-4657', 3, 'no gluten', 'humanity@protonmail.com', 1);
+INSERT INTO `reservation` (`id`, `name`, `reservation_time`, `phone`, `how_many`, `requests`, `email`, `enabled`) VALUES (6, 'Anthony', '2020-07-06 22:00:00', '303-854-8799', 10, 'special menu', 'specialness@msn.com', 1);
+INSERT INTO `reservation` (`id`, `name`, `reservation_time`, `phone`, `how_many`, `requests`, `email`, `enabled`) VALUES (7, 'Emily', '2020-07-10 18:45:00', '360-987-8872', 5, 'no pork', 'deepthoughts@yahoo.com', 1);
+INSERT INTO `reservation` (`id`, `name`, `reservation_time`, `phone`, `how_many`, `requests`, `email`, `enabled`) VALUES (8, 'Bruce', '2020-07-19 21:15:00', '212-985-3658', 6, 'needs food very hot', 'ohlalaouioui@gmail.com', 1);
+INSERT INTO `reservation` (`id`, `name`, `reservation_time`, `phone`, `how_many`, `requests`, `email`, `enabled`) VALUES (9, 'Frida', '2020-07-28 19:00:00', '144-745-6598', 4, 'free desert', 'ambigiousmapping@aol.com', 1);
 
 COMMIT;
 

@@ -11,9 +11,4 @@
 <img src="images/reservationTechnologiesUsed.png" height ="920">
 
 ## Lessons Learned
-
-- JPA Project
-- Spring Boot
-- CRUD
-- RESTful routing API
-- Send and Receive JSON
+<img src="images/lessonsllearnedreservation.png">

@@ -23,4 +23,4 @@
 <img src="images/lessonsllearnedreservation.png">
 
 ## AWS Address
-- http://18.224.85.94:8080/ReservationTracker/api/ping
+- http://18.224.85.94:8080/ReservationTracker/api/reservation

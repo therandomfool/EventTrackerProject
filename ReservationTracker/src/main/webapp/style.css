@@ -5,7 +5,7 @@ margin: 0;
 padding: 0;
 box-sizing: border-box;
 font-family: 'Bree Serif', serif;
-text-align: center;
+/* text-align: center; */
 background:#f8f8ff;
 }
 
@@ -33,4 +33,17 @@ input:hover{
 {
 margin-top: 50px;
 font-size: 24px;
+float: left;
+}
+
+#form2
+{
+margin-top: 50px;
+font-size: 24px;
+float: right;
+}
+
+#formatDiv
+{
+	display: flex;
 }

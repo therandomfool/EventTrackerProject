@@ -11,34 +11,57 @@
 		 <!-- TODO build basic page structure with container divs etc -->
 		 <!-- Form for view all reservations -->
 		 <form name='resForm' id='form1' >
-			<input type="number" name="filmId">
-			<button class='btn' name="lookup">See all Reservations</button>
-			<div id='resData'></div>
+			<input type="number" name="id">
+			<button class='btn' name="lookup">See Reservation by ID</button>
+			
 		 </form>
 
 		 <div id='resData'></div>
-
+		 
+	<div id= 'formatDiv'> 
 		 <!-- Form for reservation creation -->
 		 <form name='resFormCreate' id='form2'>
 			<label for="name">Name:</label><br>
 			<input type="text" id="name" name="name" placeholder = "Name"><br>
 			  
-			<label for="reservation_time">Reservation Time:</label><br>
-			<input type="text" id="reservation time" name="reservation time" placeholder = "Reservation Time"><br>
+			<label for="reservationTime">Reservation Time:</label><br>
+			<input type="text" id="reservationTime" name="reservationTime" placeholder = "Reservation Time"><br>
 			  
 			<label for="phone">Phone:</label><br>
 			<input type="text" id="phone" name="phone" placeholder = "Phone Number"><br>
 			  
-			<label for="how_many">How Many:</label><br>
-			<input type="text" id="how_many" name="how_many" placeholder = "How Many in Party"><br>
+			<label for="howMany">How Many:</label><br>
+			<input type="text" id="howMany" name="howMany" placeholder = "How Many in Party"><br>
 			  
 			<label for="requests">Requests:</label><br>
 			<input type="text" id="requests" name="requests" placeholder = "Requests"><br>
 			  
 			<label for="name">Email:</label><br>
 			<input type="text" id="email" name="email" placeholder = "Email"><br>
-
+			<button class='btn' name="create">Create new Reservation</button>
 		 </form>
 
+		 <!-- for reservation update -->
+		 <form name='resFormUpdate' id='form3'>
+			<label for="name">Name:</label><br>
+			<input type="text" id="name" name="name" placeholder = "Name"><br>
+			  
+			<label for="reservationTime">Reservation Time:</label><br>
+			<input type="text" id="reservationTime" name="reservationTime" placeholder = "Reservation Time"><br>
+			  
+			<label for="phone">Phone:</label><br>
+			<input type="text" id="phone" name="phone" placeholder = "Phone Number"><br>
+			  
+			<label for="howMany">How Many:</label><br>
+			<input type="text" id="howMany" name="howMany" placeholder = "How Many in Party"><br>
+			  
+			<label for="requests">Requests:</label><br>
+			<input type="text" id="requests" name="requests" placeholder = "Requests"><br>
+			  
+			<label for="name">Email:</label><br>
+			<input type="text" id="email" name="email" placeholder = "Email"><br>
+			<button class='btn' name="create">Update a Reservation</button>
+		 </form>
+	</div>	
 </body>
 </html>

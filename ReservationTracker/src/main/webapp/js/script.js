@@ -20,7 +20,7 @@ function init(){
 }
 
 // Reservation not found error
-function resError(res){
+function resError(){
 	var resDiv = document.getElementById('resData');
 	resDiv.textContent = '';
 	let displayError = document.createElement('h1');
@@ -28,38 +28,38 @@ function resError(res){
 	resError.appendChild(displayError);
 }
 
-function displayRes(res) {
+function displayRes(reservation) {
 	var resDiv = document.getElementById('resData');
 	resDiv.textContent = '';
 
 	// create res name
 	let resName = document.createElement('h1');
-	resName.textContent = res.name;
+	resName.textContent = reservation.name;
 	resDiv.appendChild(resName);
 
 	// res time
 	let resTime = document.createElement('h2');
-	resTime.textContent = res.time;
+	resTime.textContent = reservation.time;
 	resDiv.appendChild(resTime);
 
 	// res phone
 	let resPhone = document.createElement('h3');
-	resPhone.textContent = res.phone;
+	resPhone.textContent = reservation.phone;
 	resPhone.appendChild(resTime);
 
 	// res how many
 	let resHowMany = document.createElement('h3');
-	resHowMany.textContent = res.howMany;
+	resHowMany.textContent = reservation.howMany;
 	resHowMany.appendChild(resHowMany);
 
 	// res requests
 	let resRequest = document.createElement('h3');
-	resRequest.textContent = res.request;
+	resRequest.textContent = reservation.request;
 	resRequest.appendChild(resRequest);
 
 	//  res email
 	let resEmail = document.createElement('h3');
-	resEmail.textContent = res.email;
+	resEmail.textContent = reservation.email;
 	resEmail.appendChild(resEmail);
 }
 
@@ -74,8 +74,8 @@ function createRes() {
 	reserve.email = form.email.value;
 }
 
-function postRes(res) {
-	let resJson = JSON.stringify(res);
+function postRes(reservation) {
+	let resJson = JSON.stringify(reservation);
 	let xhr = new XMLHttpRequest();
 	let uri = 'api/reservation';
 	xhr.open('POST', uri);

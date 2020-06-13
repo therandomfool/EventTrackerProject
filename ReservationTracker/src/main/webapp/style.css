@@ -13,3 +13,24 @@ h1
 {
 	margin-top: 50px;
 }
+
+#form1 
+{
+margin-top: 50px;
+}
+input:hover{
+	background-color: #d3d3d3;
+}
+
+.btn
+{
+	height: 20px;
+	width: 90px;
+	background-color: goldenrod;
+}
+
+#form2
+{
+margin-top: 50px;
+font-size: 24px;
+}

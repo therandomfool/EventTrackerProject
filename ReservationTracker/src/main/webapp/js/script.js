@@ -19,6 +19,11 @@ function init(){
 		event.preventDefault();
 		createRes();
 	})
+
+	document.resFormUpdate.update.addEventListener('click', function(event) {
+		event.preventDefault();
+		updateRes();
+	})
 }
 
 // Reservation not found error
@@ -57,6 +62,11 @@ function getResDisplay(id){
 function displayRes(reservation) {
 	var resDiv = document.getElementById('resData');
 	resDiv.textContent = '';
+	
+	// create res id
+	let resId = document.createElement('h1');
+	resId.textContent = reservation.id;
+	resDiv.appendChild(resId);
 
 	// create res name
 	let resName = document.createElement('h1');
@@ -128,8 +138,11 @@ function postRes(reservation) {
 }
 
 function updateRes(){
+	console.log('in update res');
 	let form = document.resFormUpdate;
+
 	let reserve = {};
+	reserve.id = form.id.value;
 	reserve.name = form.name.value;
 	reserve.reservationTime = form.reservationTime.value;
 	reserve.phone = form.phone.value;
@@ -137,5 +150,32 @@ function updateRes(){
 	reserve.requests = form.requests.value;
 	reserve.email = form.email.value;
 	reserve.enabled = true;
-	postRes(reserve);
+	console.log('in UpdateRes' + reserve.howMany);
+	postUpdateRes(reserve);
+}
+
+function postUpdateRes(reservation) {
+	console.log('in postUpdateRes' + reservation.howMany);
+	let resJson = JSON.stringify(reservation);
+	let xhr = new XMLHttpRequest();
+	let uri = 'api/reservation/' + reservation.id;
+	xhr.open('PUT', uri);
+	xhr.setRequestHeader('Content-type', 'application/json')
+
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState === 4) {
+			if(xhr.status === 200 || xhr.status === 201) {
+				let updateRes = JSON.parse(xhr.responseText);
+				displayRes(updateRes);
+			} else {
+				if (xhr.status === 400) {
+					resError( `Invalid Reservation data unable to create Reservation from <pre> ${resJson}</pre>`);
+				} else {
+					resError('Unknown error creating Reservation' + xhr.status);
+				}
+			}
+		}
+	}
+	console.log(resJson);
+	xhr.send(resJson);
 }

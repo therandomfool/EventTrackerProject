@@ -17,6 +17,7 @@ h1
 #form1 
 {
 margin-top: 50px;
+margin-left: 30px;
 }
 input:hover{
 	background-color: #d3d3d3;
@@ -32,15 +33,17 @@ input:hover{
 #form2
 {
 margin-top: 50px;
+margin-left: 50px;
+margin-right: 80px;
 font-size: 24px;
-float: left;
+float: left !important;
 }
 
-#form2
+#form3
 {
 margin-top: 50px;
 font-size: 24px;
-float: right;
+float: right !important;
 }
 
 #formatDiv

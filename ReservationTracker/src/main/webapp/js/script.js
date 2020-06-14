@@ -63,36 +63,40 @@ function resError(){
 
 // XHR Delete reservation 
 function deleteRes(id){
-	console.log('You are here')
+	console.log(id);
+	// let resJson = JSON.stringify(reservation);
+	console.log(id);
 	let xhr = new XMLHttpRequest();
 	uri = `api/reservation/${id}`;
-	xhr.open('DELETE', uri, true);
+	xhr.open('DELETE', uri);
 	xhr.onreadystatechange = function() {
-  		if (xhr.readyState === 4 ) {
-			if ( xhr.status == 200) { // Ok or Created
-			let reserveJson = xhr.responseText;
-      		var data = JSON.parse(xhr.responseText);
-			  console.log(data);
-			  displayDeleteRes(data);
-    }
-    	else if (xhr.status === 404){
-      		console.log("GET request failed."); 
-    	} else {
-			displayDeleteRes();
+		if (xhr.readyState === 4) {
+			if(xhr.status === 200 || xhr.status === 201) {
+				let updateRes = JSON.parse(xhr.responseText);
+				// displayRes(displayDeleteRes);
+				displayDeleteRes();
+			} else {
+				if (xhr.status === 400) {
+					resError( `Invalid Reservation data unable to create Reservation from <pre> ${id}</pre>`);
+				} else {
+					resError('Unknown error creating Reservation' + xhr.status);
+				}
+			}
 		}
-  }
-};
-	xhr.send(null);
+	}
+	xhr.send(id);
 
 }
 
 // see delete reservation
-function displayDeleteRes(reservation) {
+function displayDeleteRes() {
 	var resDiv = document.getElementById('resData');
 	var clearDiv = document.getElementById('resDataId');
 	clearDiv.textContent = '';
 	resDiv.textContent = '';
 
+	
+	
 	
 
 }
@@ -100,7 +104,6 @@ function displayDeleteRes(reservation) {
 
 // XHR email reservation list
 function emailRes(){
-	console.log('You are here')
 	let xhr = new XMLHttpRequest();
 	uri = 'api/reservation';
 	xhr.open('GET', uri, true);
@@ -109,7 +112,6 @@ function emailRes(){
 			if ( xhr.status == 200) { // Ok or Created
 			let reserveJson = xhr.responseText;
       		var data = JSON.parse(xhr.responseText);
-			  console.log(data);
 			  displayEmailRes(data);
     }
     	else if (xhr.status === 404){
@@ -173,7 +175,6 @@ function howManyRes(){
 
 // see how many reservations
 function displayHowManyRes(reservation) {
-	console.log('hit the how many res');
 	var resDiv = document.getElementById('resData');
 	var clearDiv =document.getElementById('resDataId');
 	clearDiv.textContent = '';
@@ -183,7 +184,6 @@ function displayHowManyRes(reservation) {
 	for(let i = 0; i < reservation.length; i++) {
 		totalRes += reservation[i].howMany;
 	}
-	console.log(totalRes);
 	// res how many
 	let resHowMany = document.createElement('h1');
 	resHowMany.textContent = 'Total People in Reservation:  ' + totalRes;
@@ -193,7 +193,6 @@ function displayHowManyRes(reservation) {
 
 // XHR see all reservations
 function getAllRes(){
-	console.log('getAllRes')
 	let xhr = new XMLHttpRequest();
 	uri = 'api/reservation';
 	xhr.open('GET', uri, true);
@@ -218,7 +217,6 @@ function getAllRes(){
 
 // see all reservations
 function displayAllRes(reservation) {
-	console.log('hit the display all res')
 	var resDiv = document.getElementById('resData');
 	var clearDiv =document.getElementById('resDataId');
 	clearDiv.textContent = '';
@@ -266,7 +264,6 @@ function displayAllRes(reservation) {
 // XHR See reservation by id
 function getResDisplay(id){
 	let xhr = new XMLHttpRequest();
-	console.log(id);
 	uri = `api/reservation/${id}`;
 	xhr.open('GET', uri, true);
 	// xhr.setRequestHeader("Content-type", "application/json"); // Specify JSON request body
@@ -294,7 +291,8 @@ function displayRes(reservation) {
 	var clearDiv =document.getElementById('resData');
 	clearDiv.textContent = '';
 	resDiv.textContent = '';
-	
+
+	if (reservation.enabled === true) {
 	// create res id
 	let resId = document.createElement('h1');
 	resId.textContent = reservation.id;
@@ -346,6 +344,7 @@ function displayRes(reservation) {
 
 	// create DELETE button
 	var button = document.createElement("button");
+	button.type ='button';
 	button.id = 'btnDelete';
 	button.innerHTML = "DELETE a Reservation";
 
@@ -355,11 +354,14 @@ function displayRes(reservation) {
 
 	// Set reservation delete
 	btnDelete.addEventListener('click', function(event) {
+		console.log(reservation.id);	
 		event.preventDefault();
-		deleteRes();
+		deleteRes(reservation.id);
 		
-	})
-	
+	});
+	} else {
+		resError();
+	}
 }
 
 function createRes() {
@@ -401,18 +403,18 @@ function postRes(reservation) {
 }
 
 function updateRes(){
-	// let form = document.resFormUpdate;
-	// let reserve = {};
-	// reserve.id = form.id.value;
-	// reserve.name = form.name.value;
-	// reserve.reservationTime = form.reservationTime.value;
-	// reserve.phone = form.phone.value;
-	// reserve.howMany = form.howMany.value;
-	// reserve.requests = form.requests.value;
-	// reserve.email = form.email.value;
-	// reserve.enabled = true;
-	// console.log('in UpdateRes' + reserve.howMany);
-	// postUpdateRes(reserve);
+	let form = document.resFormUpdate;
+	let reserve = {};
+	reserve.id = form.id.value;
+	reserve.name = form.name.value;
+	reserve.reservationTime = form.reservationTime.value;
+	reserve.phone = form.phone.value;
+	reserve.howMany = form.howMany.value;
+	reserve.requests = form.requests.value;
+	reserve.email = form.email.value;
+	reserve.enabled = true;
+	console.log('in UpdateRes' + reserve.howMany);
+	postUpdateRes(reserve);
 	
 	
 }

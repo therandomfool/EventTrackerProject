@@ -45,6 +45,8 @@ function init(){
 		emailRes();
 		
 	})
+
+	
 }
 
 // Reservation not found error
@@ -58,6 +60,42 @@ function resError(){
 	resDiv.appendChild(displayError);
 }
 
+
+// XHR Delete reservation 
+function deleteRes(id){
+	console.log('You are here')
+	let xhr = new XMLHttpRequest();
+	uri = `api/reservation/${id}`;
+	xhr.open('DELETE', uri, true);
+	xhr.onreadystatechange = function() {
+  		if (xhr.readyState === 4 ) {
+			if ( xhr.status == 200) { // Ok or Created
+			let reserveJson = xhr.responseText;
+      		var data = JSON.parse(xhr.responseText);
+			  console.log(data);
+			  displayDeleteRes(data);
+    }
+    	else if (xhr.status === 404){
+      		console.log("GET request failed."); 
+    	} else {
+			displayDeleteRes();
+		}
+  }
+};
+	xhr.send(null);
+
+}
+
+// see delete reservation
+function displayDeleteRes(reservation) {
+	var resDiv = document.getElementById('resData');
+	var clearDiv = document.getElementById('resDataId');
+	clearDiv.textContent = '';
+	resDiv.textContent = '';
+
+	
+
+}
 
 
 // XHR email reservation list
@@ -292,19 +330,36 @@ function displayRes(reservation) {
 	resEmail.textContent = reservation.email;
 	resDiv.appendChild(resEmail);
 
-	// // create button
-	// var button = document.createElement("button");
-	// button.innerHTML = "Update a Reservation";
+	// create update button
+	var button = document.createElement("button");
+	button.id = 'btnUpdate';
+	button.innerHTML = "Update a Reservation";
 
-	// // Append 
-	// var body = document.getElementsByTagName("resData")[0];
-	// resDiv.appendChild(button);
+	// Append update button
+	var body = document.getElementsByTagName("resData")[0];
+	resDiv.appendChild(button);
 
-	// // Add event handler
-	// button.addEventListener ("click", function() {
+	// Add event handler for update button
+	button.addEventListener ("click", function() {
   	
-	// });
-	// resDivId.textContent ="";
+	});
+
+	// create DELETE button
+	var button = document.createElement("button");
+	button.id = 'btnDelete';
+	button.innerHTML = "DELETE a Reservation";
+
+	// Append DELETE button
+	var body = document.getElementsByTagName("resData");
+	resDiv.appendChild(button);
+
+	// Set reservation delete
+	btnDelete.addEventListener('click', function(event) {
+		event.preventDefault();
+		deleteRes();
+		
+	})
+	
 }
 
 function createRes() {
@@ -358,7 +413,7 @@ function updateRes(){
 	// reserve.enabled = true;
 	// console.log('in UpdateRes' + reserve.howMany);
 	// postUpdateRes(reserve);
-	// 1. Create the button
+	
 	
 }
 

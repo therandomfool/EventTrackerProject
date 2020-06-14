@@ -57,6 +57,32 @@ color: #f8f8ff;
 background-color: #e3242b !important;
 }
 
+#btnUpdate
+{
+height: 30px;
+width: 90px;
+background-color: #00dbff;
+}
+
+#btnUpdate:hover
+{
+color: #f8f8ff;
+background-color: #e3242b !important;	
+}
+
+#btnDelete
+{
+height: 30px;
+width: 90px;
+background-color: #00dbff;	
+}
+
+#btnDelete:hover
+{
+color: #f8f8ff;
+background-color: #e3242b !important;	
+}
+
 #formbtn
 {
 margin-top: 50px;

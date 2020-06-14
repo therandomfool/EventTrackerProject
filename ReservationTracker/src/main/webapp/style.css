@@ -14,11 +14,18 @@ h1
 text-align: center;
 }
 
-#resData
+#resData, 
 {
 margin-left: 30px;
 text-align: center;
 font-size: 8px;
+}
+
+#resDataId
+{
+	margin-left: 30px;
+	text-align: center;
+	font-size: 8px;
 }
 
 #form1 

@@ -28,7 +28,6 @@ function init(){
 	// Set up reservation display all form
 	document.resFormBtn.btnAll.addEventListener('click', function(event) {
 		event.preventDefault();
-		var id =document.resForm.id.value;
 		getAllRes(id);
 		
 	})
@@ -36,7 +35,6 @@ function init(){
 	// Set up How Many reservations form
 	document.resFormBtn.btnHowMany.addEventListener('click', function(event) {
 		event.preventDefault();
-		var id =document.resForm.id.value;
 		howManyRes();
 		
 	})
@@ -44,8 +42,7 @@ function init(){
 	// Set reservation email list
 	document.resFormBtn.btnHowMany.addEventListener('click', function(event) {
 		event.preventDefault();
-		var id =document.resForm.id.value;
-		howManyRes();
+		emailRes();
 		
 	})
 }
@@ -57,6 +54,56 @@ function resError(){
 	let displayError = document.createElement('h1');
 	displayError.textContent = 'Reservation not found';
 	resDiv.appendChild(displayError);
+}
+
+
+
+// XHR email reservation list
+function emailRes(){
+	console.log('You are here')
+	let xhr = new XMLHttpRequest();
+	uri = 'api/reservation';
+	xhr.open('GET', uri, true);
+	xhr.onreadystatechange = function() {
+  		if (xhr.readyState === 4 ) {
+			if ( xhr.status == 200) { // Ok or Created
+			let reserveJson = xhr.responseText;
+      		var data = JSON.parse(xhr.responseText);
+			  console.log(data);
+			  displayEmailRes(data);
+    }
+    	else if (xhr.status === 404){
+      		console.log("GET request failed."); 
+    	} else {
+			resError();
+		}
+  }
+};
+	xhr.send(null);
+
+}
+
+// see how many reservations
+function displayEmailRes(reservation) {
+	console.log('hit the how many res');
+	var resDiv = document.getElementById('resData');
+	resDiv.textContent = '';
+	
+	var totalRes = 0;
+	for(let i = 0; i < reservation.length; i++) {
+
+		// create res name
+		let resName = document.createElement('h1');
+		resName.textContent = 'Reservation Name: ' + reservation[i].name;
+		resDiv.appendChild(resName);
+
+		//  res email
+		let resEmail = document.createElement('h2');
+		resEmail.textContent = 'Reservation Email: ' + reservation[i].email;
+		resDiv.appendChild(resEmail);
+	}
+	
+
 }
 
 // XHR how many reservations
@@ -198,7 +245,7 @@ function getResDisplay(id){
 
 // See reservation by id
 function displayRes(reservation) {
-	var resDiv = document.getElementById('resData');
+	var resDiv = document.getElementById('resDataId');
 	resDiv.textContent = '';
 	
 	// create res id

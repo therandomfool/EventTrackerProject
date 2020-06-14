@@ -50,6 +50,8 @@ function init(){
 // Reservation not found error
 function resError(){
 	var resDiv = document.getElementById('resData');
+	var clearDiv =document.getElementById('resDataId');
+	clearDiv.textContent = '';
 	resDiv.textContent = '';
 	let displayError = document.createElement('h1');
 	displayError.textContent = 'Reservation not found';
@@ -85,8 +87,9 @@ function emailRes(){
 
 // see how many reservations
 function displayEmailRes(reservation) {
-	console.log('hit the how many res');
 	var resDiv = document.getElementById('resData');
+	var clearDiv =document.getElementById('resDataId');
+	clearDiv.textContent = '';
 	resDiv.textContent = '';
 	
 	var totalRes = 0;
@@ -134,6 +137,8 @@ function howManyRes(){
 function displayHowManyRes(reservation) {
 	console.log('hit the how many res');
 	var resDiv = document.getElementById('resData');
+	var clearDiv =document.getElementById('resDataId');
+	clearDiv.textContent = '';
 	resDiv.textContent = '';
 	
 	var totalRes = 0;
@@ -177,6 +182,8 @@ function getAllRes(){
 function displayAllRes(reservation) {
 	console.log('hit the display all res')
 	var resDiv = document.getElementById('resData');
+	var clearDiv =document.getElementById('resDataId');
+	clearDiv.textContent = '';
 	resDiv.textContent = '';
 	
 	for(let i = 0; i < reservation.length; i++) {
@@ -246,6 +253,8 @@ function getResDisplay(id){
 // See reservation by id
 function displayRes(reservation) {
 	var resDiv = document.getElementById('resDataId');
+	var clearDiv =document.getElementById('resData');
+	clearDiv.textContent = '';
 	resDiv.textContent = '';
 	
 	// create res id
@@ -282,6 +291,20 @@ function displayRes(reservation) {
 	let resEmail = document.createElement('h3');
 	resEmail.textContent = reservation.email;
 	resDiv.appendChild(resEmail);
+
+	// // create button
+	// var button = document.createElement("button");
+	// button.innerHTML = "Update a Reservation";
+
+	// // Append 
+	// var body = document.getElementsByTagName("resData")[0];
+	// resDiv.appendChild(button);
+
+	// // Add event handler
+	// button.addEventListener ("click", function() {
+  	
+	// });
+	// resDivId.textContent ="";
 }
 
 function createRes() {
@@ -323,20 +346,20 @@ function postRes(reservation) {
 }
 
 function updateRes(){
-	console.log('in update res');
-	let form = document.resFormUpdate;
-
-	let reserve = {};
-	reserve.id = form.id.value;
-	reserve.name = form.name.value;
-	reserve.reservationTime = form.reservationTime.value;
-	reserve.phone = form.phone.value;
-	reserve.howMany = form.howMany.value;
-	reserve.requests = form.requests.value;
-	reserve.email = form.email.value;
-	reserve.enabled = true;
-	console.log('in UpdateRes' + reserve.howMany);
-	postUpdateRes(reserve);
+	// let form = document.resFormUpdate;
+	// let reserve = {};
+	// reserve.id = form.id.value;
+	// reserve.name = form.name.value;
+	// reserve.reservationTime = form.reservationTime.value;
+	// reserve.phone = form.phone.value;
+	// reserve.howMany = form.howMany.value;
+	// reserve.requests = form.requests.value;
+	// reserve.email = form.email.value;
+	// reserve.enabled = true;
+	// console.log('in UpdateRes' + reserve.howMany);
+	// postUpdateRes(reserve);
+	// 1. Create the button
+	
 }
 
 function postUpdateRes(reservation) {

@@ -28,9 +28,9 @@ font-size: 8px;
 
 #resDataId
 {
-	margin-left: 30px;
-	text-align: center;
-	font-size: 8px;
+margin-left: 30px;
+text-align: center;
+font-size: 8px;
 }
 
 #form1 
@@ -41,14 +41,20 @@ margin-bottom: 25px;
 text-align: center;
 }
 input:hover{
-	background-color: #d3d3d3;
+background-color: #d3d3d3;
 }
 
 .btn
 {
-	height: 30px;
-	width: 90px;
-	background-color: #00dbff;
+height: 30px;
+width: 90px;
+background-color: #00dbff;
+}
+
+.btn:hover
+{
+color: #f8f8ff;
+background-color: #e3242b !important;
 }
 
 #formbtn

@@ -19,11 +19,13 @@ function init(){
 		createRes();
 	})
 
+	// Set up reservation update form
 	document.resFormUpdate.update.addEventListener('click', function(event) {
 		event.preventDefault();
 		updateRes();
 	})
 
+	// Set up reservation display all form
 	document.resForm.btnAll.addEventListener('click', function(event) {
 		event.preventDefault();
 		var id =document.resForm.id.value;
@@ -75,37 +77,37 @@ function displayAllRes(reservation) {
 	for(let i = 0; i < reservation.length; i++) {
 	// create res id
 		let resId = document.createElement('h1');
-		resId.textContent = reservation[i].id;
+		resId.textContent = 'Reservation Id: ' + reservation[i].id;
 		resDiv.appendChild(resId);
 
 	// create res name
 		let resName = document.createElement('h1');
-		resName.textContent = reservation[i].name;
+		resName.textContent = 'Reservation Name: ' + reservation[i].name;
 		resDiv.appendChild(resName);
 
 	// res time
 		let resTime = document.createElement('h2');
-		resTime.textContent = reservation[i].reservationTime;
+		resTime.textContent = 'Reservation Time: ' + reservation[i].reservationTime;
 		resDiv.appendChild(resTime);
 
 	// res phone
 		let resPhone = document.createElement('h3');
-		resPhone.textContent = reservation[i].phone;
+		resPhone.textContent = 'Phone Number: ' + reservation[i].phone;
 		resDiv.appendChild(resPhone);
 
 	// res how many
 		let resHowMany = document.createElement('h3');
-		resHowMany.textContent = reservation[i].howMany;
+		resHowMany.textContent = 'How Many In Party: ' + reservation[i].howMany;
 		resDiv.appendChild(resHowMany);
 
 	// res requests
 		let resRequest = document.createElement('h3');
-		resRequest.textContent = reservation[i].requests;
+		resRequest.textContent = 'Special Requests: ' + reservation[i].requests;
 		resDiv.appendChild(resRequest);
 
 	//  res email
 		let resEmail = document.createElement('h3');
-		resEmail.textContent = reservation[i].email;
+		resEmail.textContent = 'Reservation Email: ' + reservation[i].email;
 		resDiv.appendChild(resEmail);
 	}
 

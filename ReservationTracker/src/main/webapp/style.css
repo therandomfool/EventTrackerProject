@@ -12,12 +12,14 @@ background:#f8f8ff;
 h1
 {
 	margin-top: 50px;
+	text-align: center;
 }
 
 #form1 
 {
 margin-top: 50px;
 margin-left: 30px;
+text-align: center;
 }
 input:hover{
 	background-color: #d3d3d3;

@@ -8,8 +8,7 @@ function init(){
 	document.resForm.lookup.addEventListener('click', function(event) {
 		event.preventDefault();
 		var id =document.resForm.id.value;
-		if(!isNaN(id) && id> 0) {
-			// getAllRes(id);
+		if(!isNaN(id) && id> 0) {	
 			getResDisplay(id);
 		}
 	});
@@ -24,6 +23,13 @@ function init(){
 		event.preventDefault();
 		updateRes();
 	})
+
+	document.resForm.btnAll.addEventListener('click', function(event) {
+		event.preventDefault();
+		var id =document.resForm.id.value;
+		getAllRes(id);
+		
+	})
 }
 
 // Reservation not found error
@@ -35,6 +41,77 @@ function resError(){
 	resDiv.appendChild(displayError);
 }
 
+// XHR see all reservations
+function getAllRes(){
+	console.log('getAllRes')
+	let xhr = new XMLHttpRequest();
+	uri = 'api/reservation';
+	xhr.open('GET', uri, true);
+	xhr.onreadystatechange = function() {
+  		if (xhr.readyState === 4 ) {
+			if ( xhr.status == 200) { // Ok or Created
+			let reserveJson = xhr.responseText;
+      		var data = JSON.parse(xhr.responseText);
+			  console.log(data);
+			  displayAllRes(data);
+    }
+    	else if (xhr.status === 404){
+      		console.log("GET request failed."); 
+    	} else {
+			resError();
+		}
+  }
+};
+	xhr.send(null);
+
+}
+
+// see all reservations
+function displayAllRes(reservation) {
+	console.log('hit the display all res')
+	var resDiv = document.getElementById('resData');
+	resDiv.textContent = '';
+	
+	for(let i = 0; i < reservation.length; i++) {
+	// create res id
+		let resId = document.createElement('h1');
+		resId.textContent = reservation[i].id;
+		resDiv.appendChild(resId);
+
+	// create res name
+		let resName = document.createElement('h1');
+		resName.textContent = reservation[i].name;
+		resDiv.appendChild(resName);
+
+	// res time
+		let resTime = document.createElement('h2');
+		resTime.textContent = reservation[i].reservationTime;
+		resDiv.appendChild(resTime);
+
+	// res phone
+		let resPhone = document.createElement('h3');
+		resPhone.textContent = reservation[i].phone;
+		resDiv.appendChild(resPhone);
+
+	// res how many
+		let resHowMany = document.createElement('h3');
+		resHowMany.textContent = reservation[i].howMany;
+		resDiv.appendChild(resHowMany);
+
+	// res requests
+		let resRequest = document.createElement('h3');
+		resRequest.textContent = reservation[i].requests;
+		resDiv.appendChild(resRequest);
+
+	//  res email
+		let resEmail = document.createElement('h3');
+		resEmail.textContent = reservation[i].email;
+		resDiv.appendChild(resEmail);
+	}
+
+}
+
+// XHR See reservation by id
 function getResDisplay(id){
 	let xhr = new XMLHttpRequest();
 	console.log(id);
@@ -59,6 +136,7 @@ function getResDisplay(id){
 	xhr.send(null);
 }
 
+// See reservation by id
 function displayRes(reservation) {
 	var resDiv = document.getElementById('resData');
 	resDiv.textContent = '';

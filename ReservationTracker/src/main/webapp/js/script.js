@@ -32,6 +32,14 @@ function init(){
 		getAllRes(id);
 		
 	})
+
+	// Set up How Many reservations form
+	document.resForm.btnHowMany.addEventListener('click', function(event) {
+		event.preventDefault();
+		var id =document.resForm.id.value;
+		howManyRes();
+		
+	})
 }
 
 // Reservation not found error
@@ -41,6 +49,48 @@ function resError(){
 	let displayError = document.createElement('h1');
 	displayError.textContent = 'Reservation not found';
 	resDiv.appendChild(displayError);
+}
+
+// XHR how many reservations
+function howManyRes(){
+	let xhr = new XMLHttpRequest();
+	uri = 'api/reservation';
+	xhr.open('GET', uri, true);
+	xhr.onreadystatechange = function() {
+  		if (xhr.readyState === 4 ) {
+			if ( xhr.status == 200) { // Ok or Created
+			let reserveJson = xhr.responseText;
+      		var data = JSON.parse(xhr.responseText);
+			  console.log(data);
+			  displayHowManyRes(data);
+    }
+    	else if (xhr.status === 404){
+      		console.log("GET request failed."); 
+    	} else {
+			resError();
+		}
+  }
+};
+	xhr.send(null);
+
+}
+
+// see how many reservations
+function displayHowManyRes(reservation) {
+	console.log('hit the how many res');
+	var resDiv = document.getElementById('resData');
+	resDiv.textContent = '';
+	
+	var totalRes = 0;
+	for(let i = 0; i < reservation.length; i++) {
+		totalRes += reservation[i].howMany;
+	}
+	console.log(totalRes);
+	// res how many
+	let resHowMany = document.createElement('h3');
+	resHowMany.textContent = totalRes;
+	resDiv.appendChild(resHowMany);
+
 }
 
 // XHR see all reservations

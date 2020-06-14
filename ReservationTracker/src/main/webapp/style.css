@@ -14,6 +14,11 @@ h1
 text-align: center;
 }
 
+#id 
+{
+padding-bottom: 12px;
+}
+
 #resData 
 {
 margin-left: 30px;
@@ -43,7 +48,7 @@ input:hover{
 {
 	height: 30px;
 	width: 90px;
-	background-color: goldenrod;
+	background-color: #00dbff;
 }
 
 #formbtn

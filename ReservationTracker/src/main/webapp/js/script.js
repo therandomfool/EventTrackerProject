@@ -40,7 +40,7 @@ function init(){
 	})
 
 	// Set reservation email list
-	document.resFormBtn.btnHowMany.addEventListener('click', function(event) {
+	document.resFormBtn.btnEmails.addEventListener('click', function(event) {
 		event.preventDefault();
 		emailRes();
 		

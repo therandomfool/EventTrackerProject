@@ -26,7 +26,7 @@ function init(){
 	})
 
 	// Set up reservation display all form
-	document.resForm.btnAll.addEventListener('click', function(event) {
+	document.resFormBtn.btnAll.addEventListener('click', function(event) {
 		event.preventDefault();
 		var id =document.resForm.id.value;
 		getAllRes(id);
@@ -34,7 +34,15 @@ function init(){
 	})
 
 	// Set up How Many reservations form
-	document.resForm.btnHowMany.addEventListener('click', function(event) {
+	document.resFormBtn.btnHowMany.addEventListener('click', function(event) {
+		event.preventDefault();
+		var id =document.resForm.id.value;
+		howManyRes();
+		
+	})
+
+	// Set reservation email list
+	document.resFormBtn.btnHowMany.addEventListener('click', function(event) {
 		event.preventDefault();
 		var id =document.resForm.id.value;
 		howManyRes();
@@ -87,8 +95,8 @@ function displayHowManyRes(reservation) {
 	}
 	console.log(totalRes);
 	// res how many
-	let resHowMany = document.createElement('h3');
-	resHowMany.textContent = totalRes;
+	let resHowMany = document.createElement('h1');
+	resHowMany.textContent = 'Total People in Reservation:  ' + totalRes;
 	resDiv.appendChild(resHowMany);
 
 }

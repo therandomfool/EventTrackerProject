@@ -39,6 +39,14 @@ input:hover{
 	background-color: goldenrod;
 }
 
+#formbtn
+{
+margin-top: 50px;
+margin-left: 30px;
+margin-bottom: 25px;
+text-align: center;	
+}
+
 #form2
 {
 margin-top: 50px;

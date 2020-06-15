@@ -20,7 +20,7 @@
 <img src="images/reservationTechnologiesUsed.png" height ="920">
 
 ## Lessons Learned
-<img src="images/lessonsllearnedreservation.png">
+<img src="images/lessonslearnedreservation.png">
 
 ## AWS Address
 - http://18.224.85.94:8080/ReservationTracker/api/reservation

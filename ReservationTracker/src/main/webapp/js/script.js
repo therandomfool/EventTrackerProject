@@ -276,7 +276,8 @@ function getResDisplay(id){
 			  displayRes(data);
     }
     	else if (xhr.status === 404){
-      		console.log("GET request failed."); 
+			  console.log("GET request failed."); 
+			  resError();
     	} else {
 			resError();
 		}
@@ -328,19 +329,19 @@ function displayRes(reservation) {
 	resEmail.textContent = reservation.email;
 	resDiv.appendChild(resEmail);
 
-	// create update button
-	var button = document.createElement("button");
-	button.id = 'btnUpdate';
-	button.innerHTML = "Update a Reservation";
+	// // create update button
+	// var button = document.createElement("button");
+	// button.id = 'btnUpdate';
+	// button.innerHTML = "Update a Reservation";
 
-	// Append update button
-	var body = document.getElementsByTagName("resData")[0];
-	resDiv.appendChild(button);
+	// // Append update button
+	// var body = document.getElementsByTagName("resData")[0];
+	// resDiv.appendChild(button);
 
-	// Add event handler for update button
-	button.addEventListener ("click", function() {
+	// // Add event handler for update button
+	// button.addEventListener ("click", function() {
   	
-	});
+	// });
 
 	// create DELETE button
 	var button = document.createElement("button");
@@ -358,7 +359,7 @@ function displayRes(reservation) {
 		event.preventDefault();
 		deleteRes(reservation.id);
 		
-	});
+	})
 	} else {
 		resError();
 	}

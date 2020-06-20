@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -27,6 +28,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.skilldistillery.event.entities.Reservation;
 import com.skilldistillery.event.services.ReservationService;
 
+
+@CrossOrigin({"*", "http://localhost:4208"})
 @RestController
 @RequestMapping("api")
 public class ReservationController {

@@ -2,14 +2,14 @@ export class Reservation {
 
   id: number;
   name: string;
-  reservationTime: DateTime;
+  reservationTime: Date;
   phone: number;
   howMany: number;
   enabled: boolean;
 
   constructor( id: number,
                name?: string,
-               reservationTime?: DateTime,
+               reservationTime?: Date,
                phone?: number,
                howMany?: number,
                enabled?: boolean){

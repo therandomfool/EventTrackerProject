@@ -9,7 +9,8 @@ import { Reservation } from 'src/app/models/reservation';
 })
 export class ReservationComponent implements OnInit {
 
-  title= 'Reservation';
+  title = 'Reservation';
+  selected = null;
   editReservation = null;
   newReservation = null;
   newReservation = new Reservation();
@@ -17,15 +18,22 @@ export class ReservationComponent implements OnInit {
 
   reservation: Reservation[] = [];
 
-
-
-
-
+  updateReservation(reservation){
+    this.reservationService.update(this.updateReservation).subscribe(
+      reserve => {console.log('reservation update success');
+                  this.reload();
+      },
+      fail => {
+        console.error('Reservation component error');
+      }
+    )
+  }
 
 
   deleteReservation(id: number) {
-    this.reservationService.destroy(id).subscribe(
+    this.reservationService.delete(id).subscribe(
       reservation => {
+        console.log('reservation delete was successful');
         this.reload();
       },
       fail => {
@@ -39,7 +47,7 @@ export class ReservationComponent implements OnInit {
     this.selected = reservation;
   }
 
-  displayTable() {
+  displayAll() {
     this.selected = null;
   }
 
@@ -49,6 +57,7 @@ export class ReservationComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.reload();
   }
 
   reload() {

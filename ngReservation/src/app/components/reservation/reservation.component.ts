@@ -13,8 +13,13 @@ export class ReservationComponent implements OnInit {
   selected = null;
   editReservation = null;
   newReservation = null;
-  newReservation = new Reservation();
   showComplete = false;
+  selectedType: String = 'all';
+
+  types = [
+    'all',
+    'email list'
+  ]
 
   reservation: Reservation[] = [];
 
@@ -64,8 +69,8 @@ export class ReservationComponent implements OnInit {
     console.log('reloading');
 
     this.reservationService.index().subscribe(
-      todos => {
-        this.reservation = todos;
+      data => {
+        this.reservation = data;
         this.selected = null;
         this.editReservation = null;
       },
@@ -76,7 +81,29 @@ export class ReservationComponent implements OnInit {
     );
   }
 
+  onSubmit(reservation){
+    this.selected = reservation;
+  }
 
+  showTable(){
+    this.selected = null;
+  }
 
+  getReservationCount() {
+    return this.reservation.length;
+  }
+
+  getEmailList() {
+    const results = [];
+    for (let index = 0; index < Reservation.length; index++) {
+
+      const reserve = Reservation[index];
+      if ( reserve.email !== '' || reserve.email !== null || reserve.email !== undefined){
+        results.push(reserve);
+      }
+
+    }
+    return results;
+  }
 
 }

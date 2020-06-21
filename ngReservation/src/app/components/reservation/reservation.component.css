@@ -17,6 +17,8 @@ font-size: 1.4em!important;
 .btnTop
 {
 margin: 30px 15px 30px 15px;
+padding: 4px;
+
 }
 
 .resTable
@@ -33,4 +35,11 @@ float: left;
 .right
 {
 float: right;
+}
+
+.createHl
+{
+font-size: 35px;
+color: green;
+font-weight: bolder;
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ReservationService } from 'src/app/services/reservation.service';
 import { Reservation } from 'src/app/models/reservation';
 
+
 @Component({
   selector: 'app-reservation',
   templateUrl: './reservation.component.html',
@@ -23,10 +24,12 @@ export class ReservationComponent implements OnInit {
 
   toggleRes(){
     this.showRes = !this.showRes;
+    this.showCreate = null;
   }
 
   toggleCreate(){
     this.showCreate = !this.showCreate;
+    this.showRes = null;
   }
 
   updateReservation(reservation){
@@ -143,6 +146,7 @@ export class ReservationComponent implements OnInit {
   }
 
   create(){
+    console.log(this.newReservation);
     this.reservationService.create(this.newReservation).subscribe(
       data => {
         console.log('creation success');

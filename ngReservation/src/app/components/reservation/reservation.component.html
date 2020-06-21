@@ -8,7 +8,7 @@
 
 
 <div *ngIf='showRes' class='text-center'>
-<h4><span class='left' >Total Reservations:  <span class='badge badge-primary elb'>{{getReservationCount()}}</span></span><span class='right'>Total People Count: <span class='badge badge-danger elb' >{{getTotalPeople()}}</span></span></h4>
+<h4 class='mb-5'><span class='left' >Total Reservations:  <span class='badge badge-primary elb'>{{getReservationCount()}}</span></span><span class='right'>Total People Count: <span class='badge badge-danger elb' >{{getTotalPeople()}}</span></span></h4>
 <table *ngIf = "!selected" class = 'table table-striped resTable'>
 
   <thead class = 'thead-dark'>
@@ -83,20 +83,48 @@
 
 
 <!-- create new reservation -->
-<div *ngIf="showCreate" class='text-center'>
-  <form >
-    New Reservation<br>
-    <!-- <input type="hidden" name="id"  [(ngModel)]="newReservation.id"><br> -->
-    <input type="text" name="name" placeholder="Name" [(ngModel)]="newReservation.name"><br>
-    <input type="text" name="email" placeholder="email" [(ngModel)]="newReservation.email"><br>
-    <input type="text" name="reservationTime" placeholder="reservationTime" [(ngModel)]="newReservation.reservationTime"><br>
-    <input type="number" name="phone" placeholder="phone" [(ngModel)]="newReservation.phone"><br>
-    <input type="number" name="howMany" placeholder="how many" [(ngModel)]="newReservation.howMany"><br>
+<div class='container-fluid'>
+  <div *ngIf="showCreate" class='text-center'>
+    <h1 class='createHl'>New Reservation</h1>
+    <form >
+
+      <div class="form-group mb-3">
+        <label for="Reservation Name">Reservation Name</label>
+        <input class="form-control" type="text" name="name" placeholder="Name" [(ngModel)]="newReservation.name">
+      </div>
+      <div class="form-group mb-3">
+        <label for="Reservation Email">Reservation Email</label>
+        <input  class="form-control" type="text" name="email" placeholder="email" [(ngModel)]="newReservation.email">
+      </div>
+      <div  class="form-group mb-3">
+        <label for="Reservation Time">Reservation Time</label>
+        <input class="form-control" type="text" name="reservationTime" placeholder="yyyy:mm:ddThh:" [(ngModel)]="newReservation.reservationTime">
+      </div>
+      <div  class="form-group mb-3">
+        <label for="Phone Number">Phone Number</label>
+        <input class="form-control" type="number" name="phone" placeholder="phone" [(ngModel)]="newReservation.phone">
+      </div>
+      <div  class="form-group mb-3">
+        <label for="How Many ">How Many In Party</label>
+        <input class="form-control" type="number" name="howMany" placeholder="how many" [(ngModel)]="newReservation.howMany">
+      </div>
 
 
-    <button (click)="create()">Create Reservation</button>
 
-  </form>
+      <button class='btn btn-success btnTop' (click)="create()">Create Reservation</button>
+
+    </form>
 
 </div>
+</div>
+
+
+<!-- <div  class="form-group mb-3">
+  <label for="Reservation Time">Reservation Date</label>
+  <input class="form-control" type="date" name="reservationTime" placeholder="Reservation Date" [(ngModel)]="newReservation.reservationTime">
+</div>
+<div  class="form-group mb-3">
+  <label for="Reservation Time">Reservation Time</label>
+  <input class="form-control" type="time" name="reservationTime" placeholder="Reservation Time" [(ngModel)]="newReservation.reservationTime">
+</div> -->
 

@@ -13,12 +13,21 @@ export class ReservationComponent implements OnInit {
   selected = null;
   editReservation = null;
   newReservation = new Reservation();
-  showComplete = false;
+  showRes = false;
+  showCreate = false;
   selectedType = 'all';
 
 
 
   reservation: Reservation[] = [];
+
+  toggleRes(){
+    this.showRes = !this.showRes;
+  }
+
+  toggleCreate(){
+    this.showCreate = !this.showCreate;
+  }
 
   updateReservation(reservation){
     this.reservationService.update(reservation).subscribe(
@@ -37,6 +46,10 @@ export class ReservationComponent implements OnInit {
 
     this.selected = reservation;
     this.editReservation = Object.assign({}, this.selected);
+  }
+
+  displayAll() {
+    this.selected = null;
   }
 
 
@@ -59,10 +72,6 @@ export class ReservationComponent implements OnInit {
 
   displayRes(reservation: Reservation) {
     this.selected = reservation;
-  }
-
-  displayAll() {
-    this.selected = null;
   }
 
   constructor(
@@ -100,6 +109,14 @@ export class ReservationComponent implements OnInit {
 
   getReservationCount() {
     return this.reservation.length;
+  }
+
+  getTotalPeople(){
+    let result = 0;
+    for (let i = 0; i < this.reservation.length; i++) {
+       result += this.reservation[i].howMany;
+    }
+    return result;
   }
 
   loadReservation(){

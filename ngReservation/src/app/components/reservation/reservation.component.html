@@ -1,45 +1,73 @@
 <p>reservation works!</p>
+<div class = 'text-center'>
+  <button class='btn btn-primary btnTop' (click)='toggleRes()' >See All Reservations</button>
+  <button class='btn btn-primary btnTop' (click)='toggleCreate()' >Make A New Reservation</button>
+  <button class='btn btn-primary btnTop' (click)='toggleRes()' >See All Reservations</button>
+
+</div>
 
 
+<div *ngIf='showRes' class='text-center'>
+<h4><span class='left' >Total Reservations:  <span class='badge badge-primary elb'>{{getReservationCount()}}</span></span><span class='right'>Total People Count: <span class='badge badge-danger elb' >{{getTotalPeople()}}</span></span></h4>
+<table *ngIf = "!selected" class = 'table table-striped resTable'>
 
-<table *ngIf = "!selected">
-  <thead>
+  <thead class = 'thead-dark'>
     <tr>
-      <td>id</td>
-      <td>Name</td>
-      <td>Reservation Date/Time</td>
-      <td>Phone Number</td>
-      <td>How Many</td>
+      <th scope="col">id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Reservation Date/Time</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col">How Many</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody >
     <tr *ngFor = 'let reserve of reservation'  (click)= 'onSubmit(reserve)'>
-    <!-- | email: selectedType'  -->
+      <!-- <th scope="row"></th> -->
+      <td>{{reserve.id}}</td>
       <td>{{reserve.name}}</td>
       <td>{{reserve.email}}</td>
       <td>{{reserve.reservationTime}}</td>
       <td>{{reserve.phone}}</td>
       <td>{{reserve.howMany}}</td>
     </tr>
-
   </tbody>
+  <button class='btn btn-primary' (click)='toggleRes()' >BACK</button>
 </table>
 
 <div *ngIf ="selected">
-    <p>{{selected.name}}</p><br>
-    <p>{{selected.email}}</p><br>
-    <p>{{selected.reservationTime}}</p><br>
-    <p>{{selected.phone}}</p><br>
-    <p>{{selected.howMany}}</p><br>
+  <table  class = 'table resTable'>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Reservation Date/Time</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col">How Many</th>
+    </tr>
+    <tr>
+      <td>{{selected.id}}</td>
+      <td>{{selected.name}}</td>
+      <td>{{selected.email}}</td>
+      <td>{{selected.reservationTime}}</td>
+      <td>{{selected.phone}}</td>
+      <td>{{selected.howMany}}</td>
+  </tr>
+  </table>
 
-    <button (click)='showTable()'>Back</button>
-    <button (click)='deleteReservation(selected.id)'>Delete</button>
-    <button (click)='updatePassRes(selected)'>Edit</button>
+
+    <button class='btn btn-secondary btnTop' (click)='showTable()'>Back</button>
+    <button class='btn btn-danger btnTop' (click)='deleteReservation(selected.id)'>Delete</button>
+    <button class='btn btn-warning btnTop' (click)='updatePassRes(selected)'>Edit</button>
 
 </div>
-<h1>Total Reservations:  <span >{{getReservationCount()}}</span></h1>
-<h1>Email list:  <span >{{getEmailList()}}</span></h1>
 
+</div>
+
+<!-- <h1>Email list:  <span >{{getEmailList()}}</span></h1> -->
+
+
+<!-- edit resrvation -->
 <div *ngIf='selected && editReservation'>
   <h1>Edit Reservation </h1>
   <form>
@@ -53,7 +81,9 @@
 
 </div>
 
-<div *ngIf="!selected">
+
+<!-- create new reservation -->
+<div *ngIf="showCreate" class='text-center'>
   <form >
     New Reservation<br>
     <!-- <input type="hidden" name="id"  [(ngModel)]="newReservation.id"><br> -->

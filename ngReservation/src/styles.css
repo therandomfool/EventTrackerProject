@@ -1,3 +1,7 @@
 
 
 @import "~bootstrap/dist/css/bootstrap.css";
+
+*{
+background-color: #f8f8ff;
+}

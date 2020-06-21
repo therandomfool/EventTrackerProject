@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  font-size: medium;
+  }
+
+.elb
+{
+font-size: 1.4em!important;
+}
+
+.btnTop
+{
+margin: 30px 15px 30px 15px;
+}
+
+.resTable
+{
+  margin-top:50px;
+  padding: 50px;
+}
+
+.left
+{
+float: left;
+}
+
+.right
+{
+float: right;
+}

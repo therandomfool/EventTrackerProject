@@ -1,8 +1,8 @@
 <p>reservation works!</p>
-<div class = 'text-center'>
+<div class = 'text-center btnPos'>
   <button class='btn btn-primary btnTop' (click)='toggleRes()' >See All Reservations</button>
   <button class='btn btn-primary btnTop' (click)='toggleCreate()' >Make A New Reservation</button>
-  <button class='btn btn-primary btnTop' (click)='toggleRes()' >See All Reservations</button>
+  <button class='btn btn-primary btnTop' (click)='toggleEmail()' >See Email List</button>
 
 </div>
 
@@ -19,6 +19,7 @@
       <th scope="col">Reservation Date/Time</th>
       <th scope="col">Phone Number</th>
       <th scope="col">How Many</th>
+      <th scope="col">Special Requests</th>
     </tr>
   </thead>
   <tbody >
@@ -30,9 +31,10 @@
       <td>{{reserve.reservationTime}}</td>
       <td>{{reserve.phone}}</td>
       <td>{{reserve.howMany}}</td>
+      <td>{{reserve.requests}}</td>
     </tr>
   </tbody>
-  <button class='btn btn-primary' (click)='toggleRes()' >BACK</button>
+
 </table>
 
 <div *ngIf ="selected">
@@ -44,6 +46,7 @@
       <th scope="col">Reservation Date/Time</th>
       <th scope="col">Phone Number</th>
       <th scope="col">How Many</th>
+      <th scope="col">Special Requests</th>
     </tr>
     <tr>
       <td>{{selected.id}}</td>
@@ -52,6 +55,7 @@
       <td>{{selected.reservationTime}}</td>
       <td>{{selected.phone}}</td>
       <td>{{selected.howMany}}</td>
+      <td>{{selected.requests}}</td>
   </tr>
   </table>
 
@@ -67,7 +71,7 @@
 <!-- <h1>Email list:  <span >{{getEmailList()}}</span></h1> -->
 
 
-<!-- edit resrvation -->
+<!-- edit reservation -->
 <div class='container-fluid'>
 <div *ngIf='selected && editReservation' class='text-center'>
   <h1 class='createHl'>Edit Reservation </h1>
@@ -95,6 +99,10 @@
     <div class="form-group mb-3">
       <label for="How Many ">How Many In Party</label>
       <input class="form-control"  type="number" name="howMany" placeholder="how many" [(ngModel)]="editReservation.howMany">
+    </div>
+    <div class="form-group mb-3">
+      <label for="How Many ">Special Requests</label>
+      <input class="form-control"  type="text" name="requests" placeholder="Special Requests" [(ngModel)]="editReservation.requests">
     </div>
 
     <button class = 'p-2 mt-3 btn btn-warning' type ='submit' name= 'edit' (click)="updateReservation(this.editReservation)">Edit</button>
@@ -134,7 +142,10 @@
         <label for="How Many ">How Many In Party</label>
         <input class="form-control" type="number" name="howMany" placeholder="how many" [(ngModel)]="newReservation.howMany">
       </div>
-
+      <div class="form-group mb-3">
+        <label for="How Many ">Special Requests</label>
+        <input class="form-control"  type="text" name="requests" placeholder="Special Requests" [(ngModel)]="newReservation.requests">
+      </div>
 
 
       <button class='btn btn-success btnTop' (click)="subCreate()">Create Reservation</button>
@@ -146,6 +157,24 @@
 
 
 
-<!-- idea to concat two values into reservationTime in component.ts -->
+<!-- Show email list -->
+<div class='container-fluid'>
+  <div *ngIf = 'showEmail' class='text-center table resTable'>
+    <h1 class='createHl'>Email List</h1>
 
+    <table class= ' table table-striped'>
+      <thead class = 'thead-dark'>
+      <th>Name</th><th>Email</th>
+      </thead>
+      <tr class='text-center' *ngFor = 'let reserve of reservation'  (click)= 'onSubmit(reserve)'>
+
+        <td>{{reserve.name}}</td>
+        <td>{{reserve.email}}</td>
+
+      </tr>
+    </table>
+
+
+  </div>
+</div>
 

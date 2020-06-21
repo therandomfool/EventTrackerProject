@@ -6,8 +6,13 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
-  font-size: medium;
+  font-size: .9em;
   }
+
+.btnPos
+{
+margin-top: 30px;
+}
 
 .elb
 {

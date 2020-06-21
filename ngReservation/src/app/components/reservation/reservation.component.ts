@@ -16,6 +16,7 @@ export class ReservationComponent implements OnInit {
   newReservation = new Reservation();
   showRes = false;
   showCreate = false;
+  showEmail = false;
   selectedType = 'all';
   dateTime =null;
 
@@ -26,11 +27,19 @@ export class ReservationComponent implements OnInit {
   toggleRes(){
     this.showRes = !this.showRes;
     this.showCreate = null;
+    this.showEmail = null;
   }
 
   toggleCreate(){
     this.showCreate = !this.showCreate;
     this.showRes = null;
+    this.showEmail = null;
+  }
+
+  toggleEmail(){
+    this.showEmail = !this.showEmail;
+    this.showRes= null;
+    this.showCreate = null;
   }
 
   updateReservation(reservation){
@@ -50,6 +59,7 @@ export class ReservationComponent implements OnInit {
 
     this.selected = reservation;
     this.editReservation = Object.assign({}, this.selected);
+    this.reload();
   }
 
   displayAll() {
@@ -139,7 +149,7 @@ export class ReservationComponent implements OnInit {
       // const reserve = this.reservation[index];
       if ( this.reservation[index].email !== '' || this.reservation[index].email !== null || this.reservation[index].email !== undefined){
 
-        results.push(this.reservation[index].email);
+        results.push(this.reservation[index].email, this.reservation[index].name);
       }
 
     }

@@ -17,6 +17,7 @@ export class ReservationComponent implements OnInit {
   showRes = false;
   showCreate = false;
   selectedType = 'all';
+  dateTime =null;
 
 
 
@@ -145,8 +146,19 @@ export class ReservationComponent implements OnInit {
     return results;
   }
 
+
+  subCreate(){
+    console.log(this.newReservation.time);
+    console.log(this.newReservation.date);
+
+     this.dateTime = this.newReservation.date + 'T' + this.newReservation.time;
+     this.newReservation.reservationTime = this.dateTime;
+     this.create();
+  }
+
   create(){
     console.log(this.newReservation);
+
     this.reservationService.create(this.newReservation).subscribe(
       data => {
         console.log('creation success');

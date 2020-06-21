@@ -8,6 +8,9 @@ export class Reservation {
   reservationTime: Date;
   phone: number;
   howMany: number;
+  date: Date;
+  time: number;
+  requests: string;
 
 
   constructor( id?: number,
@@ -15,7 +18,10 @@ export class Reservation {
                email?: string,
                reservationTime?: Date,
                phone?: number,
-               howMany?: number
+               howMany?: number,
+               date?: Date,
+               time?: number,
+               requests?: string
                ){
 
      this.id = id;
@@ -24,5 +30,8 @@ export class Reservation {
      this.reservationTime = reservationTime;
      this.phone = phone;
      this.howMany = howMany;
+     this.date = date;
+     this.time = time;
+     this.requests = requests;
                }
 }

@@ -8,7 +8,7 @@
 
 
 <div *ngIf='showRes' class='text-center'>
-<h4 class='mb-5'><span class='left' >Total Reservations:  <span class='badge badge-primary elb'>{{getReservationCount()}}</span></span><span class='right'>Total People Count: <span class='badge badge-danger elb' >{{getTotalPeople()}}</span></span></h4>
+<h4 class='mb-5'><span class='left' >Total Reservations:  <span class='p-2 mb-3 badge badge-primary elb'>{{getReservationCount()}}</span></span><span class='right'>Total People Count: <span class='p-2 mb-3 badge badge-danger elb' >{{getTotalPeople()}}</span></span></h4>
 <table *ngIf = "!selected" class = 'table table-striped resTable'>
 
   <thead class = 'thead-dark'>
@@ -68,17 +68,39 @@
 
 
 <!-- edit resrvation -->
-<div *ngIf='selected && editReservation'>
-  <h1>Edit Reservation </h1>
-  <form>
-    <input type="text" name="name" placeholder="Name" [(ngModel)]="editReservation.name"><br>
-    <input type="text" name="email" placeholder="email" [(ngModel)]="editReservation.email"><br>
-    <input type="text" name="reservationTime" placeholder="reservation Time" [(ngModel)]="editReservation.reservationTime"><br>
-    <input type="number" name="phone" placeholder="phone" [(ngModel)]="editReservation.phone"><br>
-    <input type="number" name="howMany" placeholder="how many" [(ngModel)]="editReservation.howMany"><br>
-    <button class = 'btn btn-warning' type ='submit' name= 'edit' (click)="updateReservation(this.editReservation)">Edit</button>
+<div class='container-fluid'>
+<div *ngIf='selected && editReservation' class='text-center'>
+  <h1 class='createHl'>Edit Reservation </h1>
+  <form  class='form-group'>
+    <div class="form-group mb-3">
+      <label for="Reservation Name">Reservation Name</label>
+      <input class="form-control" type="text" name="name" placeholder="Name" [(ngModel)]="editReservation.name">
+    </div>
+    <div class="form-group mb-3">
+      <label for="Reservation Email">Reservation Email</label>
+      <input class="form-control" type="text" name="email" placeholder="email" [(ngModel)]="editReservation.email">
+    </div>
+    <div class="form-group mb-3">
+      <label for="Reservation Time">Reservation Date</label>
+      <input class="form-control" type="date" name="reservationTime" placeholder="reservation Time" [(ngModel)]="editReservation.date">
+    </div>
+    <div class="form-group mb-3">
+      <label for="Reservation Time">Reservation Time</label>
+      <input class="form-control" type="time" name="reservationTime" placeholder="reservation Time" [(ngModel)]="editReservation.time">
+    </div>
+    <div class="form-group mb-3">
+      <label for="Phone Number">Phone Number</label>
+      <input class="form-control"  type="number" name="phone" placeholder="phone" [(ngModel)]="editReservation.phone">
+    </div>
+    <div class="form-group mb-3">
+      <label for="How Many ">How Many In Party</label>
+      <input class="form-control"  type="number" name="howMany" placeholder="how many" [(ngModel)]="editReservation.howMany">
+    </div>
+
+    <button class = 'p-2 mt-3 btn btn-warning' type ='submit' name= 'edit' (click)="updateReservation(this.editReservation)">Edit</button>
   </form>
 
+</div>
 </div>
 
 
@@ -86,7 +108,7 @@
 <div class='container-fluid'>
   <div *ngIf="showCreate" class='text-center'>
     <h1 class='createHl'>New Reservation</h1>
-    <form >
+    <form class='form-group' >
 
       <div class="form-group mb-3">
         <label for="Reservation Name">Reservation Name</label>
@@ -97,8 +119,12 @@
         <input  class="form-control" type="text" name="email" placeholder="email" [(ngModel)]="newReservation.email">
       </div>
       <div  class="form-group mb-3">
+        <label for="Reservation Time">Reservation Date</label>
+        <input class="form-control" type="date" name="date" placeholder="Reservation Date" [(ngModel)]="newReservation.date">
+      </div>
+      <div  class="form-group mb-3">
         <label for="Reservation Time">Reservation Time</label>
-        <input class="form-control" type="text" name="reservationTime" placeholder="yyyy:mm:ddThh:" [(ngModel)]="newReservation.reservationTime">
+        <input class="form-control" type="time" name="time" placeholder="Reservation Time" [(ngModel)]="newReservation.time">
       </div>
       <div  class="form-group mb-3">
         <label for="Phone Number">Phone Number</label>
@@ -111,7 +137,7 @@
 
 
 
-      <button class='btn btn-success btnTop' (click)="create()">Create Reservation</button>
+      <button class='btn btn-success btnTop' (click)="subCreate()">Create Reservation</button>
 
     </form>
 
@@ -119,12 +145,7 @@
 </div>
 
 
-<!-- <div  class="form-group mb-3">
-  <label for="Reservation Time">Reservation Date</label>
-  <input class="form-control" type="date" name="reservationTime" placeholder="Reservation Date" [(ngModel)]="newReservation.reservationTime">
-</div>
-<div  class="form-group mb-3">
-  <label for="Reservation Time">Reservation Time</label>
-  <input class="form-control" type="time" name="reservationTime" placeholder="Reservation Time" [(ngModel)]="newReservation.reservationTime">
-</div> -->
+
+<!-- idea to concat two values into reservationTime in component.ts -->
+
 

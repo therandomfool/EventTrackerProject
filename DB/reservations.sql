@@ -27,8 +27,8 @@ CREATE TABLE IF NOT EXISTS `reservation` (
   `phone` VARCHAR(45) NOT NULL,
   `how_many` INT NOT NULL,
   `requests` TEXT NULL,
-  `email` VARCHAR(200) NULL,
-  `enabled` TINYINT NOT NULL DEFAULT 1,
+  `email` VARCHAR(200) NOT NULL,
+  `enabled` TINYINT NULL DEFAULT 1,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 

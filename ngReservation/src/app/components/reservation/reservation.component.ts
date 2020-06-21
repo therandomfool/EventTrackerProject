@@ -12,26 +12,31 @@ export class ReservationComponent implements OnInit {
   title = 'Reservation';
   selected = null;
   editReservation = null;
-  newReservation = null;
+  newReservation = new Reservation();
   showComplete = false;
-  selectedType: String = 'all';
+  selectedType = 'all';
 
-  types = [
-    'all',
-    'email list'
-  ]
+
 
   reservation: Reservation[] = [];
 
   updateReservation(reservation){
-    this.reservationService.update(this.updateReservation).subscribe(
+    this.reservationService.update(reservation).subscribe(
       reserve => {console.log('reservation update success');
                   this.reload();
+                  this.selected = null;
       },
       fail => {
         console.error('Reservation component error');
       }
-    )
+    );
+  }
+
+  updatePassRes(reservation: Reservation){
+    console.log(reservation);
+
+    this.selected = reservation;
+    this.editReservation = Object.assign({}, this.selected);
   }
 
 
@@ -49,6 +54,10 @@ export class ReservationComponent implements OnInit {
   }
 
   displayReservation(reservation: Reservation) {
+    this.selected = reservation;
+  }
+
+  displayRes(reservation: Reservation) {
     this.selected = reservation;
   }
 
@@ -93,17 +102,40 @@ export class ReservationComponent implements OnInit {
     return this.reservation.length;
   }
 
-  getEmailList() {
-    const results = [];
-    for (let index = 0; index < Reservation.length; index++) {
+  loadReservation(){
+    this.reservationService.index().subscribe(
+      data => this.reservation = data,
+      err => console.error('Observer got an error: ' + err)
 
-      const reserve = Reservation[index];
-      if ( reserve.email !== '' || reserve.email !== null || reserve.email !== undefined){
-        results.push(reserve);
+
+    );
+  }
+
+  getEmailList() {
+    let results = [];
+    for (let index = 0; index < this.reservation.length; index++) {
+
+      // const reserve = this.reservation[index];
+      if ( this.reservation[index].email !== '' || this.reservation[index].email !== null || this.reservation[index].email !== undefined){
+
+        results.push(this.reservation[index].email);
       }
 
     }
     return results;
+  }
+
+  create(){
+    this.reservationService.create(this.newReservation).subscribe(
+      data => {
+        console.log('creation success');
+        this.loadReservation();
+      },
+      err => {
+        console.log('problem with creation');
+
+      }
+    );
   }
 
 }

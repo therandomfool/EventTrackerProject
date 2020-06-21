@@ -32,8 +32,10 @@ index(){
 }
 
 // create
-create(reservation){
-  return this.http.put<Reservation>(this.url, reservation).pipe (
+create(reservation: Reservation){
+  console.log(reservation);
+
+  return this.http.post<Reservation>(this.url, reservation).pipe (
     catchError((err: any) => {
       console.log('reservation service create is not working');
       return throwError('reservation service create is not working properly');

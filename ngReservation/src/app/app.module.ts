@@ -7,18 +7,18 @@ import { ReservationComponent } from './components/reservation/reservation.compo
 import { HttpClientModule } from '@angular/common/http';
 import { ReservationService } from './services/reservation.service';
 import { DatePipe } from '@angular/common';
-import { EmailPipe } from './email.pipe';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ReservationComponent,
-    EmailPipe
+    ReservationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     HttpClientModule
   ],
 

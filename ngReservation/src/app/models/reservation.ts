@@ -1,4 +1,4 @@
-import { EmailPipe } from '../email.pipe';
+
 
 export class Reservation {
 
@@ -8,15 +8,15 @@ export class Reservation {
   reservationTime: Date;
   phone: number;
   howMany: number;
-  enabled: boolean;
 
-  constructor( id: number,
+
+  constructor( id?: number,
                name?: string,
                email?: string,
                reservationTime?: Date,
                phone?: number,
-               howMany?: number,
-               enabled?: boolean){
+               howMany?: number
+               ){
 
      this.id = id;
      this.name = name;
@@ -24,6 +24,5 @@ export class Reservation {
      this.reservationTime = reservationTime;
      this.phone = phone;
      this.howMany = howMany;
-     this.enabled = enabled;
                }
 }

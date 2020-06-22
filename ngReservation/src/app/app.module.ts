@@ -10,10 +10,12 @@ import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     ReservationComponent
+
   ],
   imports: [
     BrowserModule,

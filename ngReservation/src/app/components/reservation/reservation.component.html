@@ -1,4 +1,4 @@
-<p>reservation works!</p>
+<h1 class= 'mt-5 text-center createHl'>Restaurant Reservations</h1>
 <div class = 'text-center btnPos'>
   <button class='btn btn-primary btnTop' (click)='toggleRes()' >See All Reservations</button>
   <button class='btn btn-primary btnTop' (click)='toggleCreate()' >Make A New Reservation</button>
@@ -8,7 +8,7 @@
 
 
 <div *ngIf='showRes' class='text-center'>
-<h4 class='mb-5'><span class='left' >Total Reservations:  <span class='p-2 mb-3 badge badge-primary elb'>{{getReservationCount()}}</span></span><span class='right'>Total People Count: <span class='p-2 mb-3 badge badge-danger elb' >{{getTotalPeople()}}</span></span></h4>
+<h4 class='ml-5 mb-5'><span class='left' >Total Reservations:  <span class='p-2 mb-3 badge badge-primary elb'>{{getReservationCount()}}</span></span><span class='right'>Total People Count: <span class='p-2 mb-3 mr-5 badge badge-danger elb' >{{getTotalPeople()}}</span></span></h4>
 <table *ngIf = "!selected" class = 'table table-striped resTable'>
 
   <thead class = 'thead-dark'>
@@ -68,15 +68,15 @@
 
 </div>
 
-<!-- <h1>Email list:  <span >{{getEmailList()}}</span></h1> -->
+
 
 
 <!-- edit reservation -->
 <div class='container-fluid'>
-<div *ngIf='selected && editReservation' class='text-center'>
-  <h1 class='createHl'>Edit Reservation </h1>
+  <div *ngIf='selected && editReservation' class='text-center'>
+  <h1 class='createHl mb-5'>Edit Reservation </h1>
   <form  class='form-group'>
-    <div class="form-group mb-3">
+    <div class="form-group mt-5 mb-3">
       <label for="Reservation Name">Reservation Name</label>
       <input class="form-control" type="text" name="name" placeholder="Name" [(ngModel)]="editReservation.name">
     </div>

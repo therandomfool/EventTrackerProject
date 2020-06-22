@@ -18,7 +18,7 @@ export class ReservationComponent implements OnInit {
   showCreate = false;
   showEmail = false;
   selectedType = 'all';
-  dateTime =null;
+  dateTime = null;
 
 
 
@@ -59,7 +59,7 @@ export class ReservationComponent implements OnInit {
 
     this.selected = reservation;
     this.editReservation = Object.assign({}, this.selected);
-    this.reload();
+    // this.reload();
   }
 
   displayAll() {
@@ -164,6 +164,7 @@ export class ReservationComponent implements OnInit {
      this.dateTime = this.newReservation.date + 'T' + this.newReservation.time;
      this.newReservation.reservationTime = this.dateTime;
      this.create();
+
   }
 
   create(){
@@ -172,7 +173,10 @@ export class ReservationComponent implements OnInit {
     this.reservationService.create(this.newReservation).subscribe(
       data => {
         console.log('creation success');
+        this.selected = null;
         this.loadReservation();
+
+
       },
       err => {
         console.log('problem with creation');

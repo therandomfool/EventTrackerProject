@@ -4,6 +4,7 @@ import { DatePipe } from '@angular/common';
 import { Reservation } from '../models/reservation';
 import { HttpClient } from '@angular/common/http';
 import { catchError} from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,8 @@ import { catchError} from 'rxjs/operators';
 export class ReservationService {
 
   private baseUrl = 'http://localhost:8084/';
-  private url = this.baseUrl + 'api/reservation';
+  // private url = this.baseUrl + 'api/reservation';
+  private url = environment.baseUrl + 'api/reservation';
 
   constructor(
     private http: HttpClient,

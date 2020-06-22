@@ -16,6 +16,9 @@
 ## API Endpoints
 <img src="images/ReservationReturnTypes.png">
 
+## Restaurant Reservation
+<img src="images/RestaurantReservationsScreenShot.png">
+
 ## Technologies Used
 <img src="images/reservationTechnologiesUsed.png" height ="920">
 
